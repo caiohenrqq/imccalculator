@@ -1,0 +1,38 @@
+import tkinter as tk
+
+def imcCalculator():
+    try:
+        weight = float(inputWeight.get())
+        height = float(inputHeight.get())
+
+        imc = weight / (height ** 2)
+        result.config(text=f'Your IMC is {imc:.2f}')
+        
+    except (ValueError, TypeError):
+        result.config(text='Insert a valid type or number!')
+
+
+window = tk.Tk()
+window.geometry('400x200')
+window.eval('tk::PlaceWindow . center')
+window.title('IMC Calculator')
+
+labelWeight = tk.Label(window, text='Weight (kg): ')
+labelWeight.pack()
+
+inputWeight = tk.Entry(window)
+inputWeight.pack()
+
+labelHeight = tk.Label(window, text='Height (m):')
+labelHeight.pack()
+
+inputHeight = tk.Entry(window)
+inputHeight.pack()
+
+buttonCalculate = tk.Button(window, text='Calculate IMC', command=imcCalculator)
+buttonCalculate.pack()
+
+result = tk.Label(window, text='')
+result.pack()
+
+window.mainloop()
